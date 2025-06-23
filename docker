@@ -1,0 +1,14 @@
+# Start with an OpenJDK base image (Java 17 LTS is common)
+FROM openjdk:17-jdk-slim
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy the built JAR file from target/ folder to /app/app.jar
+COPY target/*.jar app.jar
+
+# Expose the port your app will run on (change 8080 if needed)
+EXPOSE 8080
+
+# Run the JAR file
+ENTRYPOINT ["java", "-jar", "app.jar"]
